@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.payment.service.mapper.PaymentProductMapper">
+
+    <!--
+        查询启用商品。
+        商品查询阶段不会创建订单，只负责展示可购买商品。
+    -->
+    <select id="selectEnabledProducts" resultType="com.payment.service.entity.PaymentProduct">
+        SELECT
+            id,
+            app_code,
+            product_code,
+            product_name,
+            product_type,
+            amount,
+            currency,
+            status,
+            create_time,
+            update_time
+        FROM payment_product
+        WHERE app_code = #{appCode}
+          AND status = 1
+        ORDER BY id ASC
+    </select>
+
+</mapper>
