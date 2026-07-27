@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.payment.service.mapper.PaymentProductMappingMapper">
+
+    <!-- 根据业务商品和支付渠道查询第三方商品ID -->
+    <select id="selectByProductAndChannel"
+            resultType="com.payment.service.entity.PaymentProductMapping">
+        SELECT
+            id,
+            product_id,
+            channel,
+            store_product_id,
+            status,
+            create_time,
+            update_time
+        FROM payment_product_mapping
+        WHERE product_id = #{productId}
+          AND channel = #{channel}
+          AND status = 1
+        LIMIT 1
+    </select>
+
+</mapper>
