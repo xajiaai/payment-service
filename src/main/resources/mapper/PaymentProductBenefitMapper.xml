@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.payment.service.mapper.PaymentProductBenefitMapper">
+
+    <!-- 查询商品包含的权益定义 -->
+    <select id="selectByProductId"
+            resultType="com.payment.service.entity.PaymentProductBenefit">
+        SELECT
+            id,
+            product_id,
+            benefit_type,
+            benefit_value,
+            benefit_unit,
+            create_time
+        FROM payment_product_benefit
+        WHERE product_id = #{productId}
+    </select>
+
+</mapper>
